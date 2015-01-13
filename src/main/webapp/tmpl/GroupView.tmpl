@@ -1,0 +1,18 @@
+<script type="text/html" id="GroupView">
+	<div class="GroupView">
+		<h2 class="active groups">GroupView<a class="add-group btn btn-default">Add Group</a></h2>
+		<ul class="group-items">
+
+		</ul>
+    </div>
+</script>
+
+<script type="text/html" id="GroupsView-groups">
+{{#each result}}
+	<li class="group-item" data-id={{id}} data-name="{{name}}">
+		{{name}}<a class="delete-group btn btn-default">delete</a>
+	</li>
+{{/each}}
+</script>
+
+

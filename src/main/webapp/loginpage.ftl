@@ -12,7 +12,7 @@
 --> 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>ProjectMVC: TaskManager - Login Page</title>
+	<title>ProjectMVC: SimpleAddressBook - Login Page</title>
 
 	<!-- TODO: needs to remove that to make it faster --> 
 	<link rel="stylesheet" href="${_r.contextPath}/bootstrap/css/bootstrap.min.css" type="text/css" />
@@ -152,7 +152,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">TaskManager</a>
+			<a class="navbar-brand" href="#">SimpleAddressBook</a>
 		</div>
 	</nav>
 

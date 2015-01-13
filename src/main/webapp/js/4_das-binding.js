@@ -3,8 +3,8 @@ var app = app || {};
 (function(){
 	
 	// --------- Remote Das --------- //
-	app.projectDao = brite.registerDao(new RemoteDaoHandler("Project"));
-	app.ticketDao  = brite.registerDao(new RemoteDaoHandler("Ticket"));
+	app.groupDao  = brite.registerDao(new RemoteDaoHandler("Group"));
+	app.contactDao  = brite.registerDao(new RemoteDaoHandler("Contact"));
 	// --------- /Remote Das --------- //
 
 	// --------- Mock Data (inMemoryDao) --------- //

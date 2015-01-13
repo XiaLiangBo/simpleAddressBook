@@ -1,0 +1,25 @@
+<script id="ContactView" type="text/html">
+<div class="ContactView">
+	<ul class="contact-title">
+	    <li class="group-name">Groups</li>
+	    <li class="contact-id">Id</li>
+	    <li class="contact-name">Contact Name</li>
+	    <li class="contact-email">Email</li>
+	    <li class="contact-delete">Delete</li>
+	    <a class="add-contact btn btn-default">Add Contact</a>
+	</ul>
+	<div class="contact-ctn">
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="Contact-items">
+	<div class="contact-item">
+	    <div class="contactInfo item-groups">{{groupName}}</div>
+	    <div class="contactInfo item-id">{{id}}</div>
+	    <div class="contactInfo item-name">{{name}}</div>
+        <div class="contactInfo item-email">{{email}}</div>
+        <div class="contactInfo item-delete"><a class="delete-contact btn btn-default">delete</a></div>
+        <div class="contactInfo item-edit"><a class="edit-contact btn btn-default">edit</a></div>
+	</div>
+</script>

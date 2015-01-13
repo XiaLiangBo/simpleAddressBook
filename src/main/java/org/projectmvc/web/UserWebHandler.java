@@ -4,9 +4,7 @@ import com.britesnow.snow.web.param.annotation.WebUser;
 import com.britesnow.snow.web.rest.annotation.WebGet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.projectmvc.dao.IDao;
 import org.projectmvc.dao.UserDao;
-import org.projectmvc.entity.Ticket;
 import org.projectmvc.entity.User;
 import org.projectmvc.perf.annotation.ToMonitor;
 
@@ -22,11 +20,6 @@ public class UserWebHandler {
     @Inject
     private UserDao userDao;
 
-	@Inject
-	private IDao<User,Long> udao;
-
-	@Inject
-	private IDao<Ticket,Long> ticketDao;
 
 	@Inject
 	private WebResponseBuilder webResponseBuilder;

@@ -1,5 +1,5 @@
--- quick EMPTY : truncate "user", project, ticket, team, teamuser RESTART IDENTITY cascade;
--- quick DROP  : drop table  "user", project, ticket, team, teamuser;
+-- quick EMPTY : truncate "user", group, contact RESTART IDENTITY cascade;
+-- quick DROP  : drop table  "user", group, contact;
 
 -- --------- user --------- --
 CREATE TABLE "user"
@@ -13,59 +13,25 @@ CREATE TABLE "user"
 create index on "user" (username);
 -- --------- /user --------- --
 
-
--- --------- project --------- --
-CREATE TABLE project
+-- --------- group --------- --
+CREATE TABLE "group"
 (
 	id bigserial NOT NULL,
 	name character varying(128),
-	ticket_num_seq integer default 0,
 
-	-- Timestamp data
-	"creatorId" bigInt,
-	"createTime" timestamp with time zone,
-	"updateTime" timestamp  with time zone,
-
-	CONSTRAINT project_pkey PRIMARY KEY (id)
+	CONSTRAINT group_pkey PRIMARY KEY ("id")
 );
--- --------- /project --------- --
+-- --------- /group --------- --
 
--- --------- ticket --------- --
-CREATE TABLE ticket
-(
-	id bigserial NOT NULL,
-	title character varying(128),
-	description text,
-	"projectId" bigint,
-
-	-- Timestamp data
-	"creatorId" bigInt,
-	"createTime" timestamp without time zone,
-	"updateTime" timestamp without time zone,
-
-	CONSTRAINT ticket_pkey PRIMARY KEY (id)
-);
--- --------- /ticket --------- --
-
--- --------- team --------- --
-CREATE TABLE team
+-- --------- contact --------- --
+CREATE TABLE contact
 (
 	id bigserial NOT NULL,
 	name character varying(128),
-	"projectId" bigint,
-	roles  character varying(128),
+	email character varying(128),
+	"groupId" bigint,
 
-	CONSTRAINT team_pkey PRIMARY KEY (id)
+	CONSTRAINT contact_pkey PRIMARY KEY ("id")
 );
--- ----;----- /team --------- --
-
--- --------- teamuser --------- --
-CREATE TABLE teamuser
-(
-	"teamId" bigint NOT NULL,
-	"userId" bigint NOT NULL,
-
-	CONSTRAINT teamuser_pkey PRIMARY KEY ("teamId","userId")
-);
--- --------- /teamuser --------- --
+-- --------- /contact --------- --
 
