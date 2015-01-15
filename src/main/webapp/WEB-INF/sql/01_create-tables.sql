@@ -1,5 +1,5 @@
--- quick EMPTY : truncate "user", group, contact RESTART IDENTITY cascade;
--- quick DROP  : drop table  "user", group, contact;
+-- quick EMPTY : truncate "user", group, groupcontact, contact RESTART IDENTITY cascade;
+-- quick DROP  : drop table  "user", group, groupcontact,contact;
 
 -- --------- user --------- --
 CREATE TABLE "user"
@@ -23,15 +23,24 @@ CREATE TABLE "group"
 );
 -- --------- /group --------- --
 
--- --------- contact --------- --
+-- --------- groupcontact --------- --
+CREATE TABLE groupcontact
+(
+	"groupId" bigint NOT NULL,
+	"contactId" bigint NOT NULL,
+
+	CONSTRAINT groupcontact_pkey PRIMARY KEY ("groupId", "contactId")
+);
+-- --------- /groupcontact --------- --
+
+-- --------- Contact --------- --
 CREATE TABLE contact
 (
 	id bigserial NOT NULL,
 	name character varying(128),
 	email character varying(128),
-	"groupId" bigint,
 
 	CONSTRAINT contact_pkey PRIMARY KEY ("id")
 );
--- --------- /contact --------- --
+-- --------- /Contact --------- --
 

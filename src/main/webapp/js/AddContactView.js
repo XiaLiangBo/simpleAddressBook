@@ -31,9 +31,17 @@
 						view.$el.remove();
 					});
 				}else{
-					app.contactDao.create({name:name,email:email,groupId:view.groupId*1}).done(function(result){
-						view.$el.trigger("DO_REFRESH_CONTACT");
-						view.$el.remove();
+					app.contactDao.create({name:name,email:email}).done(function(result){
+						var contactId = result.id;
+						if(view.groupId){
+							app.groupContactDao.create({groupId:view.groupId*1,contactId:contactId*1 }).done(function(result){
+								view.$el.trigger("DO_REFRESH_CONTACT");
+								view.$el.remove();
+							});
+						}else{
+							view.$el.trigger("DO_REFRESH_CONTACT");
+							view.$el.remove();
+						}
 					});
 				}
 			}

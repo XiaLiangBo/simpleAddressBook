@@ -14,8 +14,10 @@
 				var $item = $(e.currentTarget).closest(".group-item");
 				var id = $item.attr("data-id");
 				app.groupDao.delete(id).done(function(result){
-					showGroup.call(view);
-					view.$el.trigger("DO_REFRESH_CONTACT");
+					app.groupContactDao.delete({groupId:id*1}).done(function(result){
+						showGroup.call(view);
+						view.$el.trigger("DO_REFRESH_CONTACT");
+					});
 				});
 			},
 			"click; .add-group": function (e) {

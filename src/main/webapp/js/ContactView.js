@@ -15,6 +15,7 @@
 				var contactId = $(e.currentTarget).closest(".contact-item").find(".item-id").text();
 				app.contactDao.delete(contactId).done(function(result){
 					showContact.call(view);
+					view.$el.trigger("DO_REFRESH_GROUP");
 				});
 			},
 			"click; .add-contact": function (e) {
@@ -26,6 +27,11 @@
 				var view = this;
 				var contactId = $(e.currentTarget).closest(".contact-item").find(".item-id").text();
 				brite.display("AddContactView","body",{contactId:contactId});
+			},
+			"click; .add-group-contact": function (e) {
+				var view = this;
+				var contactId = $(e.currentTarget).closest(".contact-item").find(".item-id").text();
+				brite.display("AddGroupContactView","body",{contactId:contactId});
 			}
 		},
 
@@ -41,34 +47,16 @@
 		var view = this;
 		var groupId = view.groupId;
 		var $contactCtn = view.$el.find(".contact-ctn").empty();
-		app.contactDao.list().done(function(result){
+
+		app.contactDao.list({groupId:groupId}).done(function(result){
 			$.each(result,function(index) {
 				var contact = result[index];
-				if(groupId){
-					if(contact.groupId == groupId){
-						app.groupDao.get(contact.groupId).done(function(result){
-							contact.groupName = result.name;
-							var html1 = render("Contact-items",contact);
-							$contactCtn.append(html1);
-						});
-					}
-				}else{
-					var deferred = $.Deferred();
-					if(contact.groupId){
-						app.groupDao.get(contact.groupId).done(function(result){
-							contact.groupName = result.name;
-							deferred.resolve();
-						});
-					}else{
-						contact.groupName = "no-group";
-						deferred.resolve();
-					}
-					deferred.done(function(){
-						var html2 = render("Contact-items",contact);
-						$contactCtn.append(html2);
-					});
-				}
-
+				var contactId = contact.id;
+				app.contactDao.getGroupsName({id:contactId}).done(function(result){
+					contact.groupName = result;
+					var html = render("Contact-items",contact);
+					$contactCtn.append(html);
+				});
 			});
 		});
 	}

@@ -1,10 +1,9 @@
 package org.projectmvc.entity;
 
-public class contact extends BaseEntity<Long>{
+public class Contact extends BaseEntity<Long>{
     private  int id;
     private String name;
     private String email;
-    private int groupId;
 
     public String getName() {
         return name;
@@ -20,13 +19,5 @@ public class contact extends BaseEntity<Long>{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
     }
 }
